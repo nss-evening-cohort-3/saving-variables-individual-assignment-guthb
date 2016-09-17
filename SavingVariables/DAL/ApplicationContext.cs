@@ -8,7 +8,7 @@ using SavingVariables.Models;
 
 namespace SavingVariables.DAL
 {
-    class ApplicationContext :DbContext
+    public class ApplicationContext : DbContext
     {
         public virtual DbSet<Constants> Constants { get; set; }
 

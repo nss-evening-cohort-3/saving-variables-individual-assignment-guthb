@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SavingVariables.Models
 {
-    class Constants
+    public class Constants
     {
         [Key]
         public String ConstantName { get; set; }
