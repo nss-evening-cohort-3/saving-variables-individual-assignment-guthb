@@ -12,16 +12,22 @@ namespace SavingVariables.Tests.DAL
     [TestClass]
     public class ApplicationRepositoryTest
     {
-
         //create Mock ApplicationContext
         Mock<ApplicationContext> mock_context { get; set; }
         Mock<DbSet<Constants>> mock_constants_table { get; set; }
         List<Constants> constants_list { get; set; } //this is my fake database
         
 
+        [TestMethod]
+        public void EnsureCanCreateRepoInstance()
+        {
+            ApplicationRepository repo = new ApplicationRepository();
+            Assert.IsNotNull(repo);
+        }
 
 
 
     }
+
 }
 

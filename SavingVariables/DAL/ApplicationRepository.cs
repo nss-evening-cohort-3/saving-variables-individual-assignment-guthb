@@ -10,6 +10,10 @@ namespace SavingVariables.DAL
     {
         public ApplicationContext Context { get; set; }
 
-
+        public ApplicationRepository()
+        {
+            Context = new ApplicationContext();
+        }
+        
     }
 }
