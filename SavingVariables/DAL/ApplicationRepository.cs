@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SavingVariables.DAL
 {
-    class ApplicationRepository
+    public class ApplicationRepository
     {
+        public ApplicationContext Context { get; set; }
+
+
     }
 }
