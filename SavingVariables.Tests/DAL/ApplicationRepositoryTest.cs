@@ -25,6 +25,31 @@ namespace SavingVariables.Tests.DAL
             Assert.IsNotNull(repo);
         }
 
+        [TestMethod]
+        public void EnsureRepoHasContext()
+        {
+            ApplicationRepository repo = new ApplicationRepository();
+
+            ApplicationContext actual_context = repo.Context;
+
+            Assert.IsInstanceOfType(actual_context, typeof(ApplicationContext));
+        }
+
+
+        [TestMethod]
+        public void EnsureCanAddToRepoInstance()
+        {
+
+    
+        }
+
+        [TestMethod]
+        public void EnsureCanRemoveFromRepoInstance()
+        {
+
+        }
+
+       
 
 
     }
