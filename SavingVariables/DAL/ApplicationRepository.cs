@@ -9,7 +9,6 @@ namespace SavingVariables.DAL
 {
     public class ApplicationRepository
     {
-        
 
         public ApplicationContext Context { get; set; }
 
@@ -34,6 +33,23 @@ namespace SavingVariables.DAL
             return Context.Constants.ToList();
         }
 
-        
+
+        public Constants RemoveConstants(char constants_entered)
+        {
+            Constants found_constant = FindConstantByConstantEntered(constants_entered);
+            if (found_constant != null)
+            {
+                Context.Constants.Remove(found_constant);
+                Context.SaveChanges();
+            }
+            return found_constant;
+        }
+
+        private Constants FindConstantByConstantEntered(char constants_entered)
+        {
+            Constants found_constant = Context.Constants.FirstOrDefault(rowinconstantstable => rowinconstantstable.ConstantName.ToString() == constants_entered.ToString
+            ());
+            return found_constant;
+        }
     }
 }

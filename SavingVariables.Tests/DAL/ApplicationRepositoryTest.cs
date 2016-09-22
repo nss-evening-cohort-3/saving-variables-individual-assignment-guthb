@@ -76,7 +76,7 @@ namespace SavingVariables.Tests.DAL
             Assert.IsInstanceOfType(actual_context, typeof(ApplicationContext));
         }
         
-        [TestMethod]
+        [TestMethod] //Test for adding to database
         public void EnsureCanAddConstantsToDatabase()
         {
 
@@ -99,14 +99,33 @@ namespace SavingVariables.Tests.DAL
         }
 
         [TestMethod]
-        public void EnsureCanRemoveFromRepoInstance()
+        public void EnsureCanRemoveAllConstantsFromRepoInstance()
+        {
+            //Arrange
+            constants_list.Add(new Constants { Id = 1, ConstantName = 'a', Varible = 1 });
+            constants_list.Add(new Constants { Id = 2, ConstantName = 'b', Varible = 2 });
+            constants_list.Add(new Constants { Id = 3, ConstantName = 'c', Varible = 3 });
+
+            //Act
+            char constants_entered = 'b';
+            Constants removed_constant = repo.RemoveConstants(constants_entered);
+            int expected_constants_count = 2;
+            int actual_constants_count = repo.GetConstant().Count;
+            int expected_constants_id = 2;
+            int actual_constants_id = removed_constant.Id;
+
+            //Assert
+            Assert.AreEqual(expected_constants_count, actual_constants_count);
+            Assert.AreEqual(expected_constants_id, actual_constants_id);
+         }
+
+        [TestMethod]
+        public void EnssureCanListAllConstantsFromRepoInstance()
         {
 
         }
 
-       
-
-
+ 
     }
 
 }
