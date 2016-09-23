@@ -119,11 +119,7 @@ namespace SavingVariables.Tests.DAL
             Assert.AreEqual(expected_constants_id, actual_constants_id);
          }
 
-        [TestMethod]
-        public void EnssureCanListAllConstantsFromRepoInstance()
-        {
-
-        }
+       
 
  
     }

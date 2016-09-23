@@ -54,6 +54,9 @@
   <ItemGroup>
     <Compile Include="DAL\ApplicationContext.cs" />
     <Compile Include="DAL\ApplicationRepository.cs" />
+    <Compile Include="Evaluate.cs" />
+    <Compile Include="Expression.cs" />
+    <Compile Include="ExpressionException.cs" />
     <Compile Include="Migrations\201609192200080_InitialCreate.cs" />
     <Compile Include="Migrations\201609192200080_InitialCreate.Designer.cs">
       <DependentUpon>201609192200080_InitialCreate.cs</DependentUpon>
