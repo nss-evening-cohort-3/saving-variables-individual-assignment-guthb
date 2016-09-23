@@ -36,7 +36,11 @@ namespace SavingVariables
                         }
                     default:
                         {
-                            //call class based on user entered to handle the 
+
+                            Console.WriteLine(myExpression.parseStringEntered(userEntered));
+                            
+                           
+                           //call class based on user entered to handle the 
                             //following operations
                             //clear varible
                             //remove varible

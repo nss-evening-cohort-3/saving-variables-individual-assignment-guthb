@@ -87,7 +87,7 @@ namespace SavingVariables.Tests.DAL
             
 
 
-            Constants my_constant  = new Constants { ConstantName = 'a', Varible = 1};
+            Constants my_constant  = new Constants { ConstantName = "a", Varible = 1};
 
             //Act
             repo.AddConstant(my_constant);
@@ -102,12 +102,12 @@ namespace SavingVariables.Tests.DAL
         public void EnsureCanRemoveAllConstantsFromRepoInstance()
         {
             //Arrange
-            constants_list.Add(new Constants { Id = 1, ConstantName = 'a', Varible = 1 });
-            constants_list.Add(new Constants { Id = 2, ConstantName = 'b', Varible = 2 });
-            constants_list.Add(new Constants { Id = 3, ConstantName = 'c', Varible = 3 });
+            constants_list.Add(new Constants { Id = 1, ConstantName = "a", Varible = 1 });
+            constants_list.Add(new Constants { Id = 2, ConstantName = "b", Varible = 2 });
+            constants_list.Add(new Constants { Id = 3, ConstantName = "c", Varible = 3 });
 
             //Act
-            char constants_entered = 'b';
+            string constants_entered = "b";
             Constants removed_constant = repo.RemoveConstants(constants_entered);
             int expected_constants_count = 2;
             int actual_constants_count = repo.GetConstant().Count;

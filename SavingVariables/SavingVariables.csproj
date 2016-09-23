@@ -57,22 +57,30 @@
     <Compile Include="Evaluate.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="ExpressionException.cs" />
-    <Compile Include="Migrations\201609192200080_InitialCreate.cs" />
-    <Compile Include="Migrations\201609192200080_InitialCreate.Designer.cs">
-      <DependentUpon>201609192200080_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201609232205205_InitialCreate.cs" />
+    <Compile Include="Migrations\201609232205205_InitialCreate.Designer.cs">
+      <DependentUpon>201609232205205_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609232210457_UpdateConstantTable.cs" />
+    <Compile Include="Migrations\201609232210457_UpdateConstantTable.Designer.cs">
+      <DependentUpon>201609232210457_UpdateConstantTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609192200080_InitialCreate.resx">
-      <DependentUpon>201609192200080_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609232205205_InitialCreate.resx">
+      <DependentUpon>201609232205205_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609232210457_UpdateConstantTable.resx">
+      <DependentUpon>201609232210457_UpdateConstantTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

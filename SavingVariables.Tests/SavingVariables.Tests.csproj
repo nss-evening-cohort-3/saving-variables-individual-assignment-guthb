@@ -70,8 +70,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DAL\ApplicationRepositoryTest.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ExpressionTest.cs" />
+    <Compile Include="EvaluateTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SavingVariables\SavingVariables.csproj">

@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace SavingVariables.Tests
 {
     [TestClass]
-    public class UnitTest2
+    public class ExpressionTest
     {
         [TestMethod]
         public void TestMethod1()

@@ -9,11 +9,15 @@ namespace SavingVariables
 {
     class Expression
     {
-        public char EnteredValue_One { get; set; }
-        public object EnteredValue_Two  { get; set; }
+        public string EnteredValue_One { get; set; }
+        public int EnteredValue_Two  { get; set; }
         public char EnteredOperator { get; set; }
+        public Stack my_Stack = new Stack();
 
         public string readExpression(string enteredExpression)
+
+
+
         {
             string[] termsArray;
             char[] operatorArray = new char[] { '=' };
@@ -25,6 +29,7 @@ namespace SavingVariables
         //user input interrogation
         string userInputRegExPattern = @"^((\-?\w)\s*([\=])\s*(\-?\d+))$";
         string constantString = @"^(\s*([A-Za-z])\s*[=]\s*(\-?\d+)\s*)$";
+        string singleConstant = @"^([A-Za-z])$";
 
         //method to check valid pattern and set flag
         public bool validateEnteredStringCheck(string enteredExpression)
@@ -51,11 +56,12 @@ namespace SavingVariables
         //value before th operator, the operator and 
         //value after the operator and store them
 
-        public void parseStringEntered(string enteredExpression)
+        public string parseStringEntered(string enteredExpression)
         {
             //pulling out the operator
             Match match = Regex.Match(enteredExpression, userInputRegExPattern);
             char[] operatorArray = new char[] { '=' };
+            string returnValue;
 
             if (match.Success)
             {
@@ -63,7 +69,7 @@ namespace SavingVariables
                 try
                 {
                     //parse the constant
-                    var userInpeutBeforeOperator = char.Parse(termsArray[1]);
+                    var userInpeutBeforeOperator = (termsArray[1]);
 
                     //parse the integer
                     var usertInputAfterOperator = int.Parse(termsArray[1]);
@@ -76,6 +82,7 @@ namespace SavingVariables
                 catch (Exception)
                 {
                     throw new ExpressionException("incomplete string, try again");
+                    
                 }
             }
             //constant check
@@ -86,18 +93,33 @@ namespace SavingVariables
                 try
                 {
                     
-                    var userInputBeforeOperator = char.Parse(constantArray[0]);
-                    var userInputAfterOperator = (constantArray[1]);
+                    var userInputBeforeOperator = (constantArray[0]);
+                    var userInputAfterOperator = int.Parse(constantArray[1]);
 
                     //set the values outside scope
                     EnteredValue_One = userInputBeforeOperator;
                     EnteredValue_Two = userInputAfterOperator;
+                    my_Stack.AddConstant(EnteredValue_One, EnteredValue_Two);
+                    returnValue = "saved " + EnteredValue_One + " as " + EnteredValue_Two;
+                    return returnValue;
                 }
-                catch (Exception)
+                catch (Exception exp)
                 {
-                    throw new ExpressionException("something was entered incorrectly.");
+                    return exp.Message;
+                    
+                    
                 }
             }
+            match = Regex.Match(enteredExpression, singleConstant);
+            if (match.Success)
+              {
+                returnValue = " = " + my_Stack.FindConstant(match.Value).ToString();
+                return returnValue;
+              }
+
+
+
+            return "something was entered incorrectly!!";
         }
     }
 }

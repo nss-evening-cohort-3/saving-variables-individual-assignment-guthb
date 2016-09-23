@@ -24,8 +24,20 @@ namespace SavingVariables.DAL
 
         public void AddConstant(Constants my_constant)
         {
-            Context.Constants.Add(my_constant);
-            Context.SaveChanges();
+            if (FindConstantByConstantEntered(my_constant.ConstantName) == null)
+            {
+                Context.Constants.Add(my_constant);
+                Context.SaveChanges();
+
+            }
+            else
+            {
+                throw new Exception("Error! " + my_constant.ConstantName + " is already defined!");
+
+            }
+
+
+
         }
 
         public List<Constants> GetConstant()
@@ -34,7 +46,7 @@ namespace SavingVariables.DAL
         }
 
 
-        public Constants RemoveConstants(char constants_entered)
+        public Constants RemoveConstants(string constants_entered)
         {
             Constants found_constant = FindConstantByConstantEntered(constants_entered);
             if (found_constant != null)
@@ -45,7 +57,7 @@ namespace SavingVariables.DAL
             return found_constant;
         }
 
-        private Constants FindConstantByConstantEntered(char constants_entered)
+        public Constants FindConstantByConstantEntered(string constants_entered)
         {
             Constants found_constant = Context.Constants.FirstOrDefault(rowinconstantstable => rowinconstantstable.ConstantName.ToString() == constants_entered.ToString
             ());
