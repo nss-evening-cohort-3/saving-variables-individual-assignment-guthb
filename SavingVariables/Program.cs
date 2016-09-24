@@ -42,8 +42,8 @@ namespace SavingVariables
                            
                            //call class based on user entered to handle the 
                             //following operations
-                            //clear varible
-                            //remove varible
+                            
+                            
                             //delete varible
                         }
                         Console.WriteLine();

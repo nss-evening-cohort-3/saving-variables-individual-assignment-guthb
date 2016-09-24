@@ -30,6 +30,8 @@ namespace SavingVariables
         string userInputRegExPattern = @"^((\-?\w)\s*([\=])\s*(\-?\d+))$";
         string constantString = @"^(\s*([A-Za-z])\s*[=]\s*(\-?\d+)\s*)$";
         string singleConstant = @"^([A-Za-z])$";
+        string clearSingleConstant = @"(?<=clear\s)[A-Za-z]$";
+        string clearAllConstants = @"^(clear)\s(all)$";
 
         //method to check valid pattern and set flag
         public bool validateEnteredStringCheck(string enteredExpression)
@@ -112,11 +114,25 @@ namespace SavingVariables
             }
             match = Regex.Match(enteredExpression, singleConstant);
             if (match.Success)
-              {
-                returnValue = " = " + my_Stack.FindConstant(match.Value).ToString();
-                return returnValue;
-              }
+            {
+              returnValue = " = " + my_Stack.FindConstant(match.Value).ToString();
+              return returnValue;
+            }
 
+            match = Regex.Match(enteredExpression, clearSingleConstant);
+            if (match.Success)
+           
+            {
+                try
+                {
+                    returnValue = my_Stack.RemoveConstant(match.Value).ToString() + " is now free!";
+                    return returnValue;
+                }
+                catch (Exception exp)
+                {
+                    return exp.Message;
+                }
+            }
 
 
             return "something was entered incorrectly!!";

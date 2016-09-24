@@ -41,6 +41,16 @@ namespace SavingVariables
 
         }
 
+        public string RemoveConstant(string enteredString)
+        {
+            ApplicationRepository rep = new ApplicationRepository();
+            
+            Constants removedConstant = rep.RemoveConstants(enteredString);
+
+            return removedConstant.ConstantName;
+
+        }
+
 
 
     }

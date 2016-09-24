@@ -53,8 +53,13 @@ namespace SavingVariables.DAL
             {
                 Context.Constants.Remove(found_constant);
                 Context.SaveChanges();
+                return found_constant;
             }
-            return found_constant;
+            else
+            {
+                throw new Exception("Error! constant doesn't exist");
+
+            }
         }
 
         public Constants FindConstantByConstantEntered(string constants_entered)
