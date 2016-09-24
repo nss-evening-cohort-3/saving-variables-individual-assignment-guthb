@@ -33,7 +33,7 @@ namespace SavingVariables
         string clearAllConstants = @"(?<command>clear|remove|delete)\sall$";
 
         //method to check valid pattern and set flag
-        public bool validateEnteredStringCheck(string enteredExpression)
+        /*public bool validateEnteredStringCheck(string enteredExpression)
         {
             bool returnValue = false;
             //check for valid expression
@@ -51,7 +51,7 @@ namespace SavingVariables
             }
             return returnValue;
             
-        }
+        }*/
 
         //if entered string was valid parse 
         //value before th operator, the operator and 
@@ -59,8 +59,6 @@ namespace SavingVariables
 
         public string parseStringEntered(string enteredExpression)
         {
-
-            
             //pulling out the operator
             Match match = Regex.Match(enteredExpression, userInputRegExPattern);
             char[] operatorArray = new char[] { '=' };
@@ -122,7 +120,6 @@ namespace SavingVariables
                 try
                 {
                     returnValue = my_Stack.RemoveConstant(match.Value).ToString() + " is now free!";
-                    
 
                     return returnValue;
                 }
@@ -136,8 +133,7 @@ namespace SavingVariables
             {
                 try
                 {
-                    return my_Stack.ShowConstants(enteredExpression).ToString();
-                    
+                    return my_Stack.ShowConstants(enteredExpression).ToString();                   
                 }
                 catch (Exception exp)
                 {

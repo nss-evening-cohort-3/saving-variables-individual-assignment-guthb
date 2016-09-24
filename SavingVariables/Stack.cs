@@ -10,25 +10,16 @@ namespace SavingVariables
 {
     class Stack
     {
-
-            //properties
-            public string lastCommand { get; set; }
-            //public string lastAnswer { get; set; }
-
-            //public Dictionary<string, int> constantDictionary = new Dictionary<string, int>();
-            // set to private
-            //add public method to
-
+        //properties
+        public string lastCommand { get; set; }
 
         public void AddConstant(string enteredConstant, int enteredInteger)
         {
             ApplicationRepository repo = new ApplicationRepository();
-
-
+        
             repo.AddConstant(new Constants()
             {
                 ConstantName = enteredConstant, Varible = enteredInteger
-
             });
         }
 
@@ -36,9 +27,9 @@ namespace SavingVariables
         {
             ApplicationRepository repo = new ApplicationRepository();
 
-           Constants myConstant =  repo.FindConstantByConstantEntered(enteredConstant);
-            return myConstant.Varible; 
+            Constants myConstant =  repo.FindConstantByConstantEntered(enteredConstant);
 
+            return myConstant.Varible; 
         }
 
         public string RemoveConstant(string enteredString)
@@ -48,7 +39,6 @@ namespace SavingVariables
             Constants removedConstant = repo.RemoveConstants(enteredString);
 
             return removedConstant.ConstantName;
-
         }
 
         public string ShowConstants(string enteredString)
@@ -56,17 +46,28 @@ namespace SavingVariables
             ApplicationRepository repo = new ApplicationRepository();
 
             List<Constants> allconstants = repo.GetConstant();
-            return allconstants.ConstantListToString();
+
+            if (allconstants.Count != 0)
+
+            {
+
+                return allconstants.ConstantListToString();
+            }
+            else
+            {
+                return "= Database empty! Nothing to show.";
+            }
+
         }
 
         public string DeleteConstants(string enteredString)
         {
             ApplicationRepository repo = new ApplicationRepository();
 
-            //repo.Context.Database.ExecuteSqlCommand("TRUNCATE TABLE dbo.Constants");
-            return "Deleted all items from database!";
-        }
+            repo.Context.Database.ExecuteSqlCommand("TRUNCATE TABLE dbo.Constants");
 
+            return "= deleted all items from database!";
+        }
 
     }
 }

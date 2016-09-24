@@ -54,7 +54,6 @@
   <ItemGroup>
     <Compile Include="DAL\ApplicationContext.cs" />
     <Compile Include="DAL\ApplicationRepository.cs" />
-    <Compile Include="Evaluate.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="ExpressionException.cs" />
     <Compile Include="Migrations\201609232205205_InitialCreate.cs" />

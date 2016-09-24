@@ -12,11 +12,8 @@ namespace SavingVariables
        
         static void Main(string[] args)
         {
-            // need to add the data stuff here now there is no stack
-            Expression myExpression = new Expression( );
-            Evaluate myEvaluate = new Evaluate();
+            Expression myExpression = new Expression();
             Stack my_Stack = new Stack();
-
 
             //repeats until user stops
             bool running = true;
@@ -25,13 +22,10 @@ namespace SavingVariables
                 Console.Write(">>");
                 var userEntered = Console.ReadLine();
 
-                //check input for
-
                 if (userEntered.ToLower() != "lastq")
                 {
                     my_Stack.lastCommand = userEntered;
                 }
-
 
                 switch (userEntered)
                 {
@@ -51,20 +45,14 @@ namespace SavingVariables
                         }
                     default:
                         {
-                            Console.WriteLine(myExpression.parseStringEntered(userEntered));
-                            
-                            //clear varible
-                            //delete varible
-
+                            Console.WriteLine(myExpression.parseStringEntered(userEntered));                      
                         }
                         Console.WriteLine();
                         break;
-
                 }
 
             }
             Console.ReadKey();
-
         }
     }
 }
