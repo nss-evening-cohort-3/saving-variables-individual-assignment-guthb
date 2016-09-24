@@ -9,14 +9,16 @@ namespace SavingVariables.DAL
 {
     public class ApplicationRepository
     {
-
+        //property
         public ApplicationContext Context { get; set; }
 
+        //constructor
         public ApplicationRepository()
         {
             Context = new ApplicationContext();
         }
 
+        //injection
         public ApplicationRepository(ApplicationContext _context)
         {
             Context = _context;
@@ -28,23 +30,17 @@ namespace SavingVariables.DAL
             {
                 Context.Constants.Add(my_constant);
                 Context.SaveChanges();
-
             }
             else
             {
                 throw new Exception("Error! " + my_constant.ConstantName + " is already defined!");
-
             }
-
-
-
         }
 
         public List<Constants> GetConstant()
         {
             return Context.Constants.ToList();
         }
-
 
         public Constants RemoveConstants(string constants_entered)
         {
@@ -58,7 +54,6 @@ namespace SavingVariables.DAL
             else
             {
                 throw new Exception("Error! constant doesn't exist");
-
             }
         }
 

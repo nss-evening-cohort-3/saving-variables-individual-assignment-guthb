@@ -12,12 +12,10 @@ namespace SavingVariables
         public string EnteredValue_One { get; set; }
         public int EnteredValue_Two  { get; set; }
         public char EnteredOperator { get; set; }
+
         public Stack my_Stack = new Stack();
 
         public string readExpression(string enteredExpression)
-
-
-
         {
             string[] termsArray;
             char[] operatorArray = new char[] { '=' };
@@ -31,7 +29,8 @@ namespace SavingVariables
         string constantString = @"^(\s*([A-Za-z])\s*[=]\s*(\-?\d+)\s*)$";
         string singleConstant = @"^([A-Za-z])$";
         string clearSingleConstant = @"(?<=clear\s)[A-Za-z]$";
-        string clearAllConstants = @"^(clear)\s(all)$";
+        string showAllConstants = @"(?<=)ow\sall$";
+        string clearAllConstants = @"(?$";
 
         //method to check valid pattern and set flag
         public bool validateEnteredStringCheck(string enteredExpression)
@@ -84,7 +83,6 @@ namespace SavingVariables
                 catch (Exception)
                 {
                     throw new ExpressionException("incomplete string, try again");
-                    
                 }
             }
             //constant check
@@ -93,8 +91,7 @@ namespace SavingVariables
             {
                 var constantArray = match.Value.Split('=');
                 try
-                {
-                    
+                { 
                     var userInputBeforeOperator = (constantArray[0]);
                     var userInputAfterOperator = int.Parse(constantArray[1]);
 
@@ -108,8 +105,6 @@ namespace SavingVariables
                 catch (Exception exp)
                 {
                     return exp.Message;
-                    
-                    
                 }
             }
             match = Regex.Match(enteredExpression, singleConstant);
@@ -121,7 +116,6 @@ namespace SavingVariables
 
             match = Regex.Match(enteredExpression, clearSingleConstant);
             if (match.Success)
-           
             {
                 try
                 {
@@ -133,7 +127,18 @@ namespace SavingVariables
                     return exp.Message;
                 }
             }
-
+            match = Regex.Match(enteredExpression, showAllConstants);
+            if (match.Success)    
+            {
+                try
+                {
+                    returnValue = my_Stack.ShowConstants(enteredExpression).ToString();
+                }
+                catch (Exception exp)
+                {
+                    return exp.Message;
+                }
+            }
 
             return "something was entered incorrectly!!";
         }
