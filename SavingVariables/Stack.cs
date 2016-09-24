@@ -13,9 +13,9 @@ namespace SavingVariables
 
             //properties
             public string lastCommand { get; set; }
-            public string lastAnswer { get; set; }
+            //public string lastAnswer { get; set; }
 
-            public Dictionary<string, int> constantDictionary = new Dictionary<string, int>();
+            //public Dictionary<string, int> constantDictionary = new Dictionary<string, int>();
             // set to private
             //add public method to
 
@@ -55,8 +55,8 @@ namespace SavingVariables
         {
             ApplicationRepository repo = new ApplicationRepository();
 
-            Constants allconstants = repo.GetConstant();
-            return allconstants.ToString();
+            List<Constants> allconstants = repo.GetConstant();
+            return allconstants.ConstantListToString();
         }
 
     }

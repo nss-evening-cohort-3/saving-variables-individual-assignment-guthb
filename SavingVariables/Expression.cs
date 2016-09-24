@@ -132,7 +132,8 @@ namespace SavingVariables
             {
                 try
                 {
-                    returnValue = my_Stack.ShowConstants(enteredExpression).ToString();
+                    return my_Stack.ShowConstants(enteredExpression).ToString();
+                    
                 }
                 catch (Exception exp)
                 {
