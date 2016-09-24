@@ -59,5 +59,16 @@ namespace SavingVariables
             return allconstants.ConstantListToString();
         }
 
+        public string DeleteConstants(string enteredString)
+        {
+            ApplicationRepository repo = new ApplicationRepository();
+
+            //repo.Context.Database.ExecuteSqlCommand("TRUNCATE TABLE dbo.Constants");
+            return "Deleted all items from database!";
+        }
+
+
     }
 }
+
+

@@ -30,7 +30,7 @@ namespace SavingVariables
         string singleConstant = @"^([A-Za-z])$";
         string clearSingleConstant = @"(?<=clear\s)[A-Za-z]$";
         string showAllConstants = @"(?<=)ow\sall$";
-        string clearAllConstants = @"(?$";
+        string clearAllConstants = @"(?<command>clear|remove|delete)\sall$";
 
         //method to check valid pattern and set flag
         public bool validateEnteredStringCheck(string enteredExpression)
@@ -59,6 +59,8 @@ namespace SavingVariables
 
         public string parseStringEntered(string enteredExpression)
         {
+
+            
             //pulling out the operator
             Match match = Regex.Match(enteredExpression, userInputRegExPattern);
             char[] operatorArray = new char[] { '=' };
@@ -120,6 +122,8 @@ namespace SavingVariables
                 try
                 {
                     returnValue = my_Stack.RemoveConstant(match.Value).ToString() + " is now free!";
+                    
+
                     return returnValue;
                 }
                 catch (Exception exp)
@@ -139,6 +143,19 @@ namespace SavingVariables
                 {
                     return exp.Message;
                 }
+            }
+            match = Regex.Match(enteredExpression, clearAllConstants);
+            if (match.Success)
+            {
+                try
+                {
+                    return my_Stack.DeleteConstants(enteredExpression);
+                }
+                catch (Exception exp)
+                {
+                    return exp.Message;
+                }
+
             }
 
             return "something was entered incorrectly!!";
