@@ -11,7 +11,7 @@ namespace SavingVariables
     class Stack
     {
         //properties
-        public string lastCommand { get; set; }
+        public string LastCommand { get; set; }
 
         public void AddConstant(string enteredConstant, int enteredInteger)
         {
@@ -67,6 +67,12 @@ namespace SavingVariables
             repo.Context.Database.ExecuteSqlCommand("TRUNCATE TABLE dbo.Constants");
 
             return "= deleted all items from database!";
+        }
+
+        public string ReturnHelp()
+        {
+            return "show all: prints out all variables (with their values) in tabular form saved within the database\r\nlastq: prints the last entered command or expression** even if it was unsuccessful**.\r\nquit | exit: exits the program";
+
         }
 
     }

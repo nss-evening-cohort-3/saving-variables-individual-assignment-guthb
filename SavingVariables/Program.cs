@@ -24,7 +24,7 @@ namespace SavingVariables
 
                 if (userEntered.ToLower() != "lastq")
                 {
-                    my_Stack.lastCommand = userEntered;
+                    my_Stack.LastCommand = userEntered;
                 }
 
                 switch (userEntered)
@@ -40,7 +40,12 @@ namespace SavingVariables
                         }
                     case "lastq":
                         {
-                            Console.WriteLine(my_Stack.lastCommand);
+                            Console.WriteLine(my_Stack.LastCommand);
+                            break;
+                        }
+                    case "help":
+                        {
+                            Console.WriteLine(my_Stack.ReturnHelp());
                             break;
                         }
                     default:
