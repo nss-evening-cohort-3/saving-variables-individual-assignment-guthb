@@ -4,6 +4,9 @@ For this exercise you will create a CLI application that will Read, Delete and C
 
 The goal of this project is to help students learn TDD with the Entity Framework and Moq. Students will be supplied a trivial ERD and Command Line Application with this project.
 
++## Completed ERD and Table Join ![Screenshot](/ERD Constants.png)
+
+
 This solution contains:
 
 1. Console Project
@@ -24,7 +27,7 @@ This solution contains:
 Starting your console application should create a prompt that looks like:
 
 ```sh
->> 
+>>
 ```
 
 The user will enter expressions or commands that do work on a backend database.
